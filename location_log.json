@@ -191,6 +191,18 @@
       "method": "IP",
       "accuracy": "IP-based (~city level)",
       "timestamp": "2026-07-25T18:45:45.106381+00:00"
+    },
+    {
+      "lat": 10.699,
+      "lng": 76.6849,
+      "city": "Palakkad",
+      "region": "Kerala",
+      "country": "IN",
+      "isp": "Bharat Sanchar Nigam Ltd",
+      "ip": "2001:4490:4e59:3863:2016:e231:5537:185b",
+      "method": "IP",
+      "accuracy": "IP-based (~city level)",
+      "timestamp": "2026-07-25T18:46:46.839428+00:00"
     }
   ]
 }
