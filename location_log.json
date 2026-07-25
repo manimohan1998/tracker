@@ -32,6 +32,18 @@
       "method": "IP",
       "accuracy": "IP-based",
       "timestamp": "2026-07-25T20:33:56.916Z"
+    },
+    {
+      "lat": 10.9661,
+      "lng": 76.347,
+      "city": "Nāttukal",
+      "region": "Kerala",
+      "country": "India",
+      "isp": "Mahanagar Telephone Nigam Limited",
+      "ip": "59.176.83.242",
+      "method": "IP",
+      "accuracy": "IP-based",
+      "timestamp": "2026-07-25T20:35:07.590Z"
     }
   ]
 }
