@@ -491,6 +491,13 @@
       "method": "IP",
       "accuracy": "IP-based",
       "timestamp": "2026-07-25T20:07:17.536Z"
+    },
+    {
+      "lat": 10.632914,
+      "lng": 76.86412,
+      "accuracy": 212,
+      "method": "GPS",
+      "timestamp": "2026-07-25T20:10:55.759Z"
     }
   ]
 }
