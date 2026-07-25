@@ -255,7 +255,7 @@
     {
       "lat": 10.9661,
       "lng": 76.347,
-      "city": "Nāttukal",
+      "city": "N\u0101ttukal",
       "region": "Kerala",
       "country": "India",
       "isp": "Mahanagar Telephone Nigam Limited",
@@ -279,7 +279,7 @@
     {
       "lat": 10.9661,
       "lng": 76.347,
-      "city": "Nāttukal",
+      "city": "N\u0101ttukal",
       "region": "Kerala",
       "country": "India",
       "isp": "Mahanagar Telephone Nigam Limited",
@@ -287,6 +287,18 @@
       "method": "IP",
       "accuracy": "IP-based",
       "timestamp": "2026-07-25T18:52:49.526Z"
+    },
+    {
+      "lat": 10.699,
+      "lng": 76.6849,
+      "city": "Palakkad",
+      "region": "Kerala",
+      "country": "IN",
+      "isp": "Bharat Sanchar Nigam Ltd",
+      "ip": "2001:4490:4e59:3863:2016:e231:5537:185b",
+      "method": "IP",
+      "accuracy": "IP-based (~city level)",
+      "timestamp": "2026-07-25T18:52:58.498440+00:00"
     }
   ]
 }
