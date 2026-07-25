@@ -20,6 +20,13 @@
       "accuracy": 212,
       "method": "GPS",
       "timestamp": "2026-07-25T20:27:21.859Z"
+    },
+    {
+      "lat": 10.632914,
+      "lng": 76.86412,
+      "accuracy": 212,
+      "method": "GPS",
+      "timestamp": "2026-07-25T20:29:22.295Z"
     }
   ]
 }
