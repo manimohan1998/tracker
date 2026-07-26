@@ -35,6 +35,18 @@
       "method": "GPS",
       "accuracy": 212,
       "timestamp": "2026-07-26T09:06:34.841Z"
+    },
+    {
+      "lat": 10.632914,
+      "lng": 76.86412,
+      "city": "Kanayannur",
+      "region": "Kerala",
+      "country": "IN",
+      "isp": "AS9829 National Internet Backbone",
+      "ip": "59.176.83.242",
+      "method": "GPS",
+      "accuracy": 212,
+      "timestamp": "2026-07-26T09:07:34.906Z"
     }
   ]
 }
